@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Рецепты{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'pages/index.css' %}">
+    {% block css %}{% endblock %}
 </head>
 <body class="body"></body>
     {% include 'includes/menu.html' %}
@@ -20,10 +20,10 @@
     
     <script src="{% static 'js/config/config.js' %}"></script>
     <script src="{% static 'js/components/CardList.js' %}"></script>
-    <script src="{% static 'js/components/Header.js' %}"></script>
-    
+    <script src="{% static 'js/components/Header.js' %}"></script>  
     <script src="{% static 'js/api/Api.js' %}"></script>
     <script src="{% static 'indexNotAuth.js' %}"></script>
+    <script src="{% static 'js/components/MainCards.js' %}"></script> 
 </body>
 
 </html>
