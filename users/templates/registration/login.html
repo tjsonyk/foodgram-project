@@ -1,11 +1,11 @@
-{% extends 'base.html' %} 
-    <title>{% block title %}Регистрация{% endblock %}</title>
+{% extends 'base.html' %}    
+<title>{% block title %}Войти на сайт{% endblock %}</title>
     {% load static %}
     {% block css %}<link rel="stylesheet" href="{% static 'pages/form.css' %}">{% endblock %}
 {% block content %}
 <main class="main container">
     <div class="main__header">
-        <h1 class="main__title">Регистрация</h1>
+        <h1 class="main__title">Войти на сайт</h1>
     </div>
     <div class="form-container">
         <form class="form" method="post">
@@ -15,13 +15,13 @@
                 <label for="{{ field.id_for_label }}" class="form__label">{{ field.label }}</label>
                 <div class="form__field-group">
                     <input type="{{ field.name|cut:"1"|cut:"2" }}" name="{{ field.name }}" id="{{ field.id_for_label  }}" class="form__input">
-                    <span class="form__error">{{ field.errors }}
-                    </span>
+                    <span class="form__error">{{ field.errors }}</span>
                 </div>
             </div>
             {% endfor %}
             <div class="form__footer">
-                <button class="button button_style_blue">Создать аккаунт</button>
+                <button class="button button_style_blue">Войти</button>
+                <a href="{% url 'password_reset' %}" class="form__forgot-link">Забыли пароль?</a>
             </div>
         </form>
     </div>

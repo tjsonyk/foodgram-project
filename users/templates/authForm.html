@@ -10,20 +10,15 @@
     <div class="form-container">
         <form class="form" method="post">
             {% csrf_token %}
-            <div class="form__group">
-                <label for="id_username" class="form__label">Имя</label>
+            {% for field in form %}
+            <div class="form__group" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+                <label for="{{ field.id_for_label }}" class="form__label">{{ field.label }}</label>
                 <div class="form__field-group">
-                    <input type="text" name="username" id="id_username" class="form__input">
-                    <span class="form__error"></span>
+                    <input type="{{ field.name|cut:"1"|cut:"2" }}" name="{{ field.name }}" id="{{ field.id_for_label  }}" class="form__input">
+                    <span class="form__error">{{ field.errors }}</span>
                 </div>
             </div>
-            <div class="form__group">
-                <label for="id_password" class="form__label">Пароль</label>
-                <div class="form__field-group">
-                    <input type="password" name="password" id="id_password" class="form__input">
-                    <span class="form__error">Имя пользователя и пароль не совпадают. Введите правильные данные.</span>
-                </div>
-            </div>
+            {% endfor %}
             <div class="form__footer">
                 <button class="button button_style_blue">Войти</button>
                 <a class="form__forgot-link">Забыли пароль?</a>
