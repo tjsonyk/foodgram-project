@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from .models import Recipe, Ingredient, Dimension, Tag
+from .models import Recipe, Ingredient, Dimension, Tag, Amount
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'text', 'pub_date', 'author')
-    list_filter = ('pub_date')
+    list_display = ('pk', 'text', 'pub_date', 'author', 'get_ingredients')
+    list_filter = ('pub_date',)
+    search_fields = ("text",) 
     empty_value_display = "-empty-"
 
 
@@ -17,7 +18,15 @@ class DimensionAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'value', 'name') 
+    list_display = ('pk', 'value', 'name')
+    search_fields = ['title']
 
 
-admin.site.register([Recipe, Ingredient, Dimension, Tag])
+class AmountAdmin(admin.ModelAdmin):
+    list_display = ('amount', 'ingredient', 'recipe')
+
+admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Ingredient, IngredientAdmin)
+admin.site.register(Dimension, DimensionAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Amount, AmountAdmin)

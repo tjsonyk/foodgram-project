@@ -34,6 +34,7 @@ class Dimension(models.Model):
         verbose_name='Единица измерения'
     )
     type_of_unit = models.CharField(max_length=1, choices=TYPES_OF_UNIT)
+    
     def __str__(self):
         return self.title
 
@@ -70,9 +71,15 @@ class Recipe(models.Model):
     cooking_time = models.DurationField(default=timedelta(minutes=1))
     slug = models.SlugField()
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
-    
+
+    def get_ingredients(self):
+        return ",".join([str(ingredient) for ingredient in self.ingredient.all()])
+
     def __str__(self):
-        return self.title
+        return str(self.title)
+    
+    def __unicode__(self):
+        return "{0}".format(self.title)
 
         class Meta:
             ordering = ('-pub_date',)
@@ -88,4 +95,4 @@ class Amount(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.ingredient.dimension
+        return str(self.ingredient.dimension)

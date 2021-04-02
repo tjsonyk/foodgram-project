@@ -14,6 +14,7 @@
     {% include 'includes/menu.html' %}
     {% block content %}<!-- Содержимое страницы -->{% endblock %}
     {% include 'includes/footer.html' %}
+    {% block JS %}
     <script src="{% static 'js/components/MainCards.js' %}"></script>
 
     <script src="{% static 'js/components/Purchases.js' %}"></script>
@@ -23,7 +24,7 @@
     <script src="{% static 'js/components/Header.js' %}"></script>  
     <script src="{% static 'js/api/Api.js' %}"></script>
     <script src="{% static 'indexNotAuth.js' %}"></script>
-    <script src="{% static 'js/components/MainCards.js' %}"></script> 
+    {% endblock %}
 </body>
 
 </html>
