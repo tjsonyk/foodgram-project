@@ -2,26 +2,25 @@
 {% load static %}
 {% block css %}<link rel="stylesheet" href="{% static 'pages/index.css' %}">{% endblock %}
     {% block content %}
+    {% load recipe_form_filters %}
     <main class="main container">
         <div class="main__header">
             <h1 class="main__title">Рецепты</h1>
             <ul class="tags">
-                <li class="tags__item">
-                    <a id="breakfast" class="tags__checkbox tags__checkbox_style_orange tags__checkbox_active" href="#"></a>
-                    <span class="tags__label">Завтрак</span>
-                </li>
-                <li class="tags__item">
-                    <a id="lunch" class="tags__checkbox tags__checkbox_style_green tags__checkbox_active" href="#"></a>
-                    <span for="lunch" class="tags__label">Обед</span>
-                </li>
-                <li class="tags__item">
-                    <a id="dinner" class="tags__checkbox tags__checkbox_style_purple tags__checkbox_active" href="#"></a>
-                    <label for="dinner" class="tags__label">Ужин</label>
-                </li>
+                {% for tag in tags %}
+                    <li class="tags__item">
+                        <a
+                            id="{{ tag.pk }}"
+                            class="tags__checkbox tags__checkbox_style_{{ tag.style }}
+                            {% if tag.value in request.GET|get_filter_values %} tags__checkbox_active {% endif %}"
+                            href="{% url 'main-page' %}?{{ request|get_filter_link:tag }}"></a>
+                        <span class="tags__label">{{ tag.name }}</span>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="card-list">
-            {% for recipe in recipe_list %}
+            {% for recipe in page %}
                 {% include 'includes/card.html' %}
             {% endfor %}
             <div class="card" data-id="124">
@@ -43,17 +42,7 @@
                 </div>
             </div>
         </div>
-        <nav class="pagination" aria-label="Search results pages">
-            <ul class="pagination__container">
-                <li class="pagination__item"><a class="pagination__link link" href="#"><span class="icon-left"></span></a></li>
-                <li class="pagination__item pagination__item_active"><a class="pagination__link link" href="#">1</a></li>
-                <li class="pagination__item"><a class="pagination__link link" href="#">2</a></li>
-                <li class="pagination__item"><a class="pagination__link link" href="#">3</a></li>
-                <li class="pagination__item"><a class="pagination__link link" href="#">4</a></li>
-                <li class="pagination__item"><a class="pagination__link link" href="#">5</a></li>
-                <li class="pagination__item"><a class="pagination__link link" href="#"><span class="icon-right"></span></a></li>
-            </ul>
-        </nav>
+        {% include "paginator.html" %}
     </main>
     {% endblock %}
     
