@@ -5,7 +5,7 @@
     {% load recipe_form_filters %}
     <main class="main container">
         <div class="main__header">
-            <h1 class="main__title">Рецепты</h1>
+            <h1 class="main__title">{{ header }}</h1>
             <ul class="tags">
                 {% for tag in tags %}
                     <li class="tags__item">
@@ -19,28 +19,21 @@
                 {% endfor %}
             </ul>
         </div>
+        {% if request.resolver_match.url_name == 'profile' %}
+        <div class="author-subscribe" data-author="{{ profile.id }}">
+            {% if user.is_authenticated %}
+            {% if profile|is_follow:user %}
+                <button class="button button_style_light-blue button_size_auto" name="subscribe"><span class="icon-check button__icon"></span>Отписаться от автора </button></p>
+            {% else %}
+                <p style="padding: 0 0 2em 0;"><button class="button button_style_light-blue button_size_auto" name="subscribe" data-out>Подписаться на автора</button></p>
+            {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
         <div class="card-list">
             {% for recipe in page %}
                 {% include 'includes/card.html' %}
             {% endfor %}
-            <div class="card" data-id="124">
-                <a href="#" class="link" target="_blank"><img src="{% static '/images/testCardImg.png' %}" alt="Какой-то текст" class="card__image"></a>
-                <div class="card__body">
-                    <a class="card__title link" href="#" target="_blank">Французские тосты</a>
-                    <ul class="card__items">
-                        <li class="card__item"><span class="badge badge_style_green">Обед</span></li>
-                        <li class="card__item"><span class="badge badge_style_orange">Завтрак</span></li>
-                        <li class="card__item"><span class="badge badge_style_purple">Ужин</span></li>
-                    </ul>
-                    <div class="card__items card__items_column">
-                        <p class="card__text"><span class="icon-time"></span> 20 мин.</p>
-                        <p class="card__text"><span class="icon-user"></span> <a href="#" style="color: black">Вероника Чернова</a></p>
-                    </div>
-                </div>
-                <div class="card__footer">
-                    <button class="button button_style_light-blue" name="purchases" data-out><span class="icon-plus button__icon"></span>Купить</button>
-                </div>
-            </div>
         </div>
         {% include "paginator.html" %}
     </main>

@@ -1,10 +1,10 @@
-from rest_framework import serializers
+from rest_framework import serializers, validators
 
-from .models import Ingredient, Tag, Dimension
+from .models import Ingredient, Dimension, Favors
 
 
 class DimensionSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         fields = ('title',)
         model = Dimension
@@ -12,13 +12,21 @@ class DimensionSerializer(serializers.ModelSerializer):
 
 class IngredientSerializer(serializers.ModelSerializer):
     dimension = serializers.CharField(source='dimension.title', read_only=True)
+
     class Meta:
         fields = ('title', 'dimension')
         model = Ingredient
 
 
-class TagSerializer(serializers.ModelSerializer):
-    
+class FavorsSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
-        fields = ('value', 'name')
-        model = Tag
+        model = Favors
+        fields = ['user', 'recipe']
+        validators = [
+            validators.UniqueTogetherValidator(
+                queryset=Favors.objects.all(),
+                fields=['user', 'recipe']
+            )
+        ]

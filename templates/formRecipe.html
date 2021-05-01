@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-<title>{% block title %}Создание рецепта{% endblock %}</title>
+<title>{% block title %}{% if recipe %}Редактирование рецепта{% else %}Создание рецепта{% endif %}{% endblock %}</title>
     {% load static %}
     {% block css %}<link rel="stylesheet" href="{% static 'pages/form.css' %}">{% endblock %}
 {% block content %}
 {% load recipe_form_filters %}
 <main class="main container">
     <div class="main__header">
-        <h1 class="main__title">Создание рецепта</h1>
+        <h1 class="main__title">{% if recipe %}Редактирование рецепта{% else %}Создание рецепта{% endif %}</h1>
     </div>
     <div class="form-container">
         <form class="form" method="post" enctype="multipart/form-data">
@@ -102,7 +102,11 @@
                 </div>
             </div>
             <div class="form__footer">
+                {% if recipe %}
+                <button class="button button_style_blue">Сохранить</button> <a style="margin-left: 2.5em" href="{% url 'recipe_delete' recipe.id %}" class="form__ingredient-link">Удалить</a>
+                {% else %}
                 <button class="button button_style_blue">Создать рецепт</button>
+                {% endif %}
                 <span class="form__error">{{ form.errors }}</span>
                 
             </div>

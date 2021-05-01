@@ -1,0 +1,33 @@
+<div class="card-user" data-author="{{ item.author.id }}">
+    <div class="card-user__header">
+        <h2 class="card-user__title">{{ item.author.username }}</h2>
+    </div>
+    <div class="card-user__body">
+        <ul class="card-user__items">
+            {% for fitem in item.author.recipes.all|slice:":3" %}
+            <li class="card-user__item">
+                <div class="recipe">
+                    {% load thumbnail %}
+                    {% thumbnail fitem.image "91x91" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="какой-то-текст" class="recipe__image">
+                    {% endthumbnail %} 
+                    <h3 class="recipe__title">{{ fitem.title }}</h3>
+                    <p class="recipe__text"><span class="icon-time"></span> {{ fitem.cooking_time }} мин.</p>
+                </div>
+            </li>
+            {% endfor %}
+            <li class="card-user__item">
+                <a href="{% url 'profile' item.author.username %}" class="card-user__link link">Еще {{ item.author.recipes.all.count}} рецептов...</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-user__footer">
+        {% csrf_token %}
+        {% load recipe_form_filters %}
+        {% if user|is_follow:item.author %}
+        <button class="button button_style_light-blue button_size_auto" name="subscribe">Отписаться</button>
+        {% else %}
+        <button class="button button_style_light-blue button_size_auto button_style_blue" name="subscribe" data-out>Подписаться на автора</button>
+        {% endif %}
+    </div>
+</div>

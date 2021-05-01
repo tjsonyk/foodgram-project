@@ -4,11 +4,11 @@
         <div class="nav__container container">
             {% if user.is_authenticated %}
             <ul class="nav__items list">
-                <li class="nav__item nav__item_active"><a href="{% url 'main-page' %}" class="nav__link link">Рецепты</a></li>
-                <li class="nav__item"><a href="#" class="nav__link link">Мои подписки</a></li>
-                <li class="nav__item"><a href="{% url 'new-recipe' %}" class="nav__link link">Создать рецепт</a></li>
-                <li class="nav__item"><a href="#" class="nav__link link">Избранное</a></li>
-                <li class="nav__item"><a href="#" class="nav__link link">Список покупок</a> <span class="badge badge_style_blue nav__badge" id="counter"></span></li>
+                <li class="nav__item {% if request.resolver_match.url_name == 'main-page' %} nav__item_active{%endif%}"><a href="{% url 'main-page' %}" class="nav__link link">Рецепты</a></li>
+                <li class="nav__item {% if request.resolver_match.url_name == 'subscription' %} nav__item_active{%endif%}"><a href="{% url 'subscription' user.username %}" class="nav__link link">Мои подписки</a></li>
+                <li class="nav__item {% if request.resolver_match.url_name == 'new-recipe' %} nav__item_active{%endif%}"><a href="{% url 'new-recipe' %}" class="nav__link link">Создать рецепт</a></li>
+                <li class="nav__item {% if request.resolver_match.url_name == 'favorite' %} nav__item_active{%endif%}"><a href="{% url 'favorite' %}" class="nav__link link">Избранное</a></li>
+                <li class="nav__item {% if request.resolver_match.url_name == 'shop' %} nav__item_active{%endif%}"><a href="{% url 'shop' %}" class="nav__link link">Список покупок</a> <span class="badge badge_style_blue nav__badge" id="counter">{% if user.buyer.count %}{{ user.buyer.count }}{% endif %}</span></li>
             </ul>
             <ul class="nav__items list">
                 <li class="nav__item"><a href="{% url 'password_change' %}" class="nav__link link">Изменить пароль</a></li>
