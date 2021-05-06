@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 volumes:
   postgres_data:
@@ -20,8 +20,8 @@ services:
     image: tjsonyk/foodgram
     restart: always
     depends_on:
-      db:
-        condition: service_healthy
+      - db
+        # condition: service_healthy
     env_file: 
       - ./.env
     volumes:
