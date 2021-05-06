@@ -60,7 +60,7 @@ jobs:
         #passphrase: ${{ secrets.PASSPHRASE }} # если ваш ssh-ключ защищен паролем
         script: |
           cd www
-          cd foodgram
+          cd foodgram-project
           sudo docker pull tjsonyk/foodgram:latest
           sudo docker-compose stop
           sudo docker-compose rm web
