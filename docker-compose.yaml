@@ -17,7 +17,7 @@ services:
       retries: 10
 
   web:
-    image: tjsonyk/foodgram
+    image: tjsonyk/foodgram:latest
     restart: always
     depends_on:
       - db
