@@ -931,15 +931,7 @@
         "pk": 117,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0431\u0430\u0442\u043e\u043d",
-            "dimension": 1
-        }
-    },
-    {
-        "pk": 118,
-        "model": "recipes.ingredient",
-        "fields": {
-            "title": "\u0431\u0430\u0442\u043e\u043d\u0447\u0438\u043a\u0438 \u0448\u043e\u043a\u043e\u043b\u0430\u0434\u043d\u044b\u0435",
+            "title": 2,
             "dimension": 1
         }
     },
@@ -1747,7 +1739,7 @@
         "pk": 219,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u04354u044c\u044f",
             "dimension": 1
         }
     },
@@ -1755,7 +1747,7 @@
         "pk": 220,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f \u043c\u0430\u0440\u0438\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u0435",
+            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u04354u044c\u044f \u043c\u0430\u0440\u0438\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u0435",
             "dimension": 1
         }
     },
@@ -1763,7 +1755,7 @@
         "pk": 221,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f \u043c\u043e\u043b\u043e\u0434\u044b\u0435",
+            "title": "\u0432\u0438\u043d\u0431u0440\u0430\u0434\u043d\u044b\u04354u044c\u044f \u043c\u043e\u043b\u043e\u0434\u044b\u0435",
             "dimension": 2
         }
     },
@@ -1915,7 +1907,7 @@
         "pk": 240,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0432\u0438\u0448\u043d\u0435\u0432\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u0432\u0438\u0448\u043d\u0435\u0432\u044b\u04354u044c\u044f",
             "dimension": 1
         }
     },
@@ -2251,7 +2243,7 @@
         "pk": 413,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0436\u0435\u043b\u0430\u0442\u0438\u043d \u043b\u0438\u0441\u0442\u043e\u0432\u043e\u0439",
+            "title": "\u0436\u0435\u043b\u0430\u0442\u0438\u043d4u043e\u0432\u043e\u0439",
             "dimension": 6
         }
     },
@@ -3387,7 +3379,7 @@
         "pk": 555,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043a\u0430\u0440\u0440\u0438 \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u043a\u0430\u0440\u0440\u04384u044c\u044f",
             "dimension": 1
         }
     },
@@ -3507,7 +3499,7 @@
         "pk": 570,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043a\u0430\u0444\u0444\u0438\u0440-\u043b\u0430\u0439\u043c \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u043a\u0430\u0444\u0444\u0438\u0440-\u043b\u0430\u0439\u043c4u044c\u044f",
             "dimension": 6
         }
     },
@@ -3796,7 +3788,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043a\u0438\u043d\u0437\u0430 \u0441\u0432\u0435\u0436\u0430\u044f",
-            "dimension": "\u0437\u0443\u0431\u0447\u0438\u043a"
+            "dimension": 18
         }
     },
     {
@@ -5468,14 +5460,14 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043b\u0430\u0432\u0430\u0448 \u0442\u043e\u043d\u043a\u0438\u0439",
-            "dimension": "\u043f\u043b\u0430\u0441\u0442"
+            "dimension": 2
         }
     },
     {
         "pk": 816,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043b\u0430\u0432\u0440\u043e\u0432\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f \u0441\u0432\u0435\u0436\u0438\u0435",
+            "title": "\u043b\u0430\u0432\u0440\u043e\u0432\u044b\u04354u044c\u044f \u0441\u0432\u0435\u0436\u0438\u0435",
             "dimension": 2
         }
     },
@@ -5483,7 +5475,7 @@
         "pk": 817,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043b\u0430\u0432\u0440\u043e\u0432\u044b\u0439 \u043b\u0438\u0441\u0442",
+            "title": "\u043b\u0430\u0432\u0440\u043e\u0432\u044b\u04394",
             "dimension": 1
         }
     },
@@ -5499,7 +5491,7 @@
         "pk": 819,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043b\u0430\u0439\u043c \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u043b\u0430\u0439\u043c4u044c\u044f",
             "dimension": 2
         }
     },
@@ -5804,7 +5796,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043b\u0438\u043c\u043e\u043d\u044b \u0441\u0443\u0448\u0435\u043d\u044b\u0435",
-            "dimension": ""
+            "dimension": 2
         }
     },
     {
@@ -6444,7 +6436,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043c\u0430\u043a\u043e\u0432\u0430\u044f \u043c\u0430\u0441\u0441\u0430",
-            "dimension": "\u043f\u0430\u0447\u043a\u0430"
+            "dimension": 19
         }
     },
     {
@@ -8364,7 +8356,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043e\u0440\u0435\u0445\u0438 \u043f\u0435\u043a\u0430\u043d \u0437\u0430\u0441\u0430\u0445\u0430\u0440\u0435\u043d\u043d\u044b\u0435",
-            "dimension": ""
+            "dimension": 2
         }
     },
     {
@@ -8843,7 +8835,7 @@
         "pk": 1237,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043d\u043e\u0439 \u043b\u0438\u0441\u0442 \u0434\u043b\u044f \u0448\u043e\u043a\u043e\u043b\u0430\u0434\u0430",
+            "title": "\u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043d\u043e\u04394\u0434\u043b\u044f \u0448\u043e\u043a\u043e\u043b\u0430\u0434\u0430",
             "dimension": 2
         }
     },
@@ -9276,7 +9268,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043f\u0435\u0440\u0435\u0446 \u0447\u0438\u043b\u0438 \u0437\u0435\u043b\u0435\u043d\u044b\u0439",
-            "dimension": "\u0441\u0442\u0440\u0443\u0447\u043e\u043a"
+            "dimension": 2
         }
     },
     {
@@ -9284,7 +9276,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u043f\u0435\u0440\u0435\u0446 \u0447\u0438\u043b\u0438 \u043a\u0440\u0430\u0441\u043d\u044b\u0439",
-            "dimension": "\u0441\u0442\u0440\u0443\u0447\u043e\u043a"
+            "dimension": 2
         }
     },
     {
@@ -10372,7 +10364,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0440\u0431u0430\u043d",
-            "dimension": "\u0432\u0435\u0442\u043e\u0447\u043a\u0430"
+            "dimension": 2
         }
     },
     {
@@ -10836,7 +10828,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0440\u043e\u043c",
-            "dimension": "\u0431\u0443\u0442\u044b\u043b\u043a\u0430"
+            "dimension": 7
         }
     },
     {
@@ -11195,7 +11187,7 @@
         "pk": 1532,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0441\u0430\u043b\u0430\u0442 \u043b\u0438\u0441\u0442\u043e\u0432\u043e\u0439",
+            "title": "\u0441\u0430\u043b\u0430\u04424u043e\u0432\u043e\u0439",
             "dimension": 1
         }
     },
@@ -11531,7 +11523,7 @@
         "pk": 1574,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u044b\u04354u044c\u044f",
             "dimension": 1
         }
     },
@@ -12291,7 +12283,7 @@
         "pk": 1669,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0441\u043c\u043e\u0440\u043e\u0434\u0438\u043d\u043e\u0432\u044b\u0435 \u043b\u0438\u0441\u0442\u044c\u044f",
+            "title": "\u0441\u043c\u043e\u0440\u043e\u0434\u0438\u043d\u043e\u0432\u044b\u04354u044c\u044f",
             "dimension": 1
         }
     },
@@ -12308,7 +12300,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0441\u043d\u0435\u0436\u043e\u043a",
-            "dimension": "\u043b"
+            "dimension": 20
         }
     },
     {
@@ -13211,7 +13203,7 @@
         "pk": 1784,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0441\u044b\u0440 \u043f\u043b\u0430\u0441\u0442\u0438\u043d\u043a\u0430\u043c\u0438",
+            "title": "\u0441\u044b\u04402u0438\u043d\u043a\u0430\u043c\u0438",
             "dimension": 1
         }
     },
@@ -13740,7 +13732,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0442\u0438\u043c\u044c\u044f\u043d \u043b\u0438\u043c\u043e\u043d\u043d\u044b\u0439",
-            "dimension": "\u0432\u0435\u0442\u043e\u0447\u043a\u0430"
+            "dimension": 2
         }
     },
     {
@@ -13860,7 +13852,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0442\u043e\u043d\u0438\u043a",
-            "dimension": "\u0431\u0443\u0442\u044b\u043b\u043a\u0430"
+            "dimension": 7
         }
     },
     {
@@ -14884,7 +14876,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0445\u043b\u0435\u0431 7 \u0437\u043b\u0430\u043a\u043e\u0432",
-            "dimension": "\u0431\u0430\u0442\u043e\u043d"
+            "dimension": 2
         }
     },
     {
@@ -15235,7 +15227,7 @@
         "pk": 2039,
         "model": "recipes.ingredient",
         "fields": {
-            "title": "\u0447\u0430\u0439 \u0447\u0435\u0440\u043d\u044b\u0439 \u043a\u0440\u0443\u043f\u043d\u043e\u043b\u0438\u0441\u0442\u043e\u0432\u043e\u0439",
+            "title": "\u0447\u0430\u0439 \u0447\u0435\u0440\u043d\u044b\u0439 \u043a\u0440\u0443\u043f\u043d\u0434u043e\u0432\u043e\u0439",
             "dimension": 13
         }
     },
@@ -15556,7 +15548,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0448\u0430\u043b\u0444\u0435\u0439 \u0441\u0443\u0448\u0435\u043d\u044b\u0439",
-            "dimension": "\u043b\u0438\u0441\u0442"
+            "dimension": 4
         }
     },
     {
@@ -15988,7 +15980,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u0449\u0430\u0432\u0435\u043b\u044c \u0441\u0432\u0435\u0436\u0438\u0439",
-            "dimension": "\u0432\u0435\u0442\u043e\u0447\u043a\u0430"
+            "dimension": 2
         }
     },
     {
@@ -16060,7 +16052,7 @@
         "model": "recipes.ingredient",
         "fields": {
             "title": "\u044d\u0441\u0442\u0440\u0431u043e\u043d \u0441\u0443\u0448\u0435\u043d\u044b\u0439",
-            "dimension": "\u0432\u0435\u0442\u043e\u0447\u043a\u0430"
+            "dimension": 2
         }
     },
     {
