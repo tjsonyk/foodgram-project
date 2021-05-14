@@ -2,6 +2,7 @@ class Favorites {
     constructor(config, api) {
         this.config = config;
         this.api = api;
+        console.log(config);
     }
 
     addFavorites (target,cardId,callBack) {
