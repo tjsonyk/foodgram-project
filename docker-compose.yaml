@@ -25,8 +25,8 @@ services:
     env_file: 
       - ./.env
     volumes:
-      - ./static:/var/www/static/
-      - ./media:/var/www/media/
+      - ./static:/code/static/
+      - ./media:/code/media/
 
   nginx:
     image: nginx:1.19.6
