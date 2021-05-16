@@ -11,4 +11,4 @@ def server_error(request):
 
 
 class JustStaticPage(TemplateView):
-    template_name = 'templates/project.html'
+    template_name = 'project.html'
