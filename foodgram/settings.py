@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv(key='SECRET_KEY')
 # SECRET_KEY = '^z1m335xr_bf_^s6+qy)#8q6ljgr5f8)dlt!w*cbj0$(fzl*t0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 APPEND_SLASH = True
 
