@@ -14,7 +14,7 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
-    path('project/', views.JustStaticPage.as_view())
+    path('project/', views.JustStaticPage.as_view(), name='technologies')
 ]
 
 if settings.DEBUG:
