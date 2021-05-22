@@ -22,10 +22,13 @@ class Tag(models.Model):
 
 
 class Dimension(models.Model):
+    METRIC = 'M'
+    SPECULATIVE = 'S'
+    ENGLISH = 'U'
     TYPES_OF_UNIT = (
-        ('M', 'Метрическая'),
-        ('S', 'Умозрительная'),
-        ('U', 'Английская')
+        (METRIC, 'Метрическая'),
+        (SPECULATIVE, 'Умозрительная'),
+        (ENGLISH, 'Английская')
     )
     title = models.CharField(
         max_length=30,
