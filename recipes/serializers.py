@@ -17,7 +17,7 @@ class IngredientSerializer(serializers.ModelSerializer):
     #dimension = serializers.CharField(source='dimension.title', read_only=True)
 
     class Meta:
-        fields = __all__
+        fields = '__all__'
         model = Ingredient
 
 
@@ -26,7 +26,7 @@ class FavorsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favors
-        fields = __all__
+        fields = '__all__'
         validators = [
             validators.UniqueTogetherValidator(
                 queryset=Favors.objects.all(),
