@@ -63,13 +63,13 @@ class Recipe(models.Model):
         )
     image = models.ImageField(upload_to='recipes/', null=True)
     text = models.TextField()
-    ingredient = models.ManyToManyField(
+    ingredients = models.ManyToManyField(
         Ingredient,
         through='Amount',
         through_fields=('recipe', 'ingredient'),
         )
-    tag = models.ManyToManyField(Tag)
-    cooking_time = models.IntegerField(default=1)
+    tags = models.ManyToManyField(Tag)
+    cooking_time = models.PositiveSmallIntegerField(default=1)
     slug = models.SlugField()
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
 
