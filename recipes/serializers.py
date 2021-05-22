@@ -8,13 +8,16 @@ class DimensionSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('title',)
         model = Dimension
+    def __str__(self):
+        return self.title
 
 
 class IngredientSerializer(serializers.ModelSerializer):
-    dimension = serializers.CharField(source='dimension.title', read_only=True)
+    dimension = serializers.StringRelatedField(many=False)
+    #dimension = serializers.CharField(source='dimension.title', read_only=True)
 
     class Meta:
-        fields = ('title', 'dimension')
+        fields = __all__
         model = Ingredient
 
 
@@ -23,7 +26,7 @@ class FavorsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favors
-        fields = ['user', 'recipe']
+        fields = __all__
         validators = [
             validators.UniqueTogetherValidator(
                 queryset=Favors.objects.all(),
