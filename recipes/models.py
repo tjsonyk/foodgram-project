@@ -77,7 +77,8 @@ class Recipe(models.Model):
         ordering = ('-pub_date',)
 
     def get_ingredients(self):
-        return ",".join([str(ingredient) for ingredient in self.ingredient.all()])
+        #return ",".join([str(ingredient) for ingredient in self.ingredient.all()])
+        return Recipe.objects.value_list('ingredients')
 
     def __str__(self):
         return str(self.title)
@@ -87,7 +88,7 @@ class Recipe(models.Model):
 
 
 class Amount(models.Model):
-    amount = models.IntegerField(default=1)
+    amount = models.PositiveSmallIntegerField(default=1)
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
