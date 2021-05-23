@@ -41,7 +41,7 @@ def index(request):
     recipe_list = tags_values(request.GET.getlist('filters'))
     tags = Tag.objects.all()
     header = 'Рецепты'
-    paginator = Paginator(recipe_list, setting.MAX_PAGE)
+    paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     return render(
