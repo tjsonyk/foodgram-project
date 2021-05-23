@@ -38,16 +38,13 @@ from .helpers import get_ingredients
 def index(request):
     title = 'Рецепты'
     recipe_list = Recipe.objects.all()
-    #recipe_list = tags_values(request.GET.getlist('filters'))
     tags_values = request.GET.getlist('filters')
-    print(tags_values)
     tags = Tag.objects.all()
     header = 'Рецепты'
 
     if tags_values:
-        print(tags_values, "double")
         recipe_list = recipe_list.filter(
-            tag__value__in=tags_values).distinct().all()
+            tags__value__in=tags_values).distinct().all()
 
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
