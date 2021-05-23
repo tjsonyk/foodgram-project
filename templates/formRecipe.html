@@ -26,7 +26,7 @@
                 <p class="form__label">Теги</p>
                 <div class="form__field-group">
                     <div class="tags">
-                        {% for tag, tag_value in form.tag.field.choices %}
+                        {% for tag, tag_value in form.tags.field.choices %}
                         <div class="tags__item">
                             <input 
                                 type="checkbox"
@@ -39,7 +39,7 @@
                         {% endfor %}
                     </div>
                     {% if form.errors %}
-                    {% for error in form.tag.errors %}
+                    {% for error in form.tags.errors %}
                     <span class="form__error">{{ error|escape }}</span>
                     {% endfor %}
                     {% endif %}
