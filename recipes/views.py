@@ -25,6 +25,7 @@ from .serializers import (
     FavorsSerializer
     )
 from .helpers import get_ingredients
+from .filters import IngredientFilter
 
 
 def tags_values(filter_values):
@@ -53,23 +54,25 @@ def index(request):
 
 @login_required
 def new_recipe(request):
-    if request.method == 'POST':
-        ingredients = get_ingredients(request)
-        form = RecipeForm(data=request.POST, files=request.FILES)
-        if not ingredients:
-            form.add_error(None, 'Добавьте ингредиенты')
-        if form.is_valid():
-            recipe = form.save(commit=False)
-            recipe.author = request.user
-            recipe.save()
-
-            for item in ingredients:
-                Amount.objects.create(
-                    amount=ingredients[item],
-                    ingredient=Ingredient.objects.get(title=f'{item}'),
-                    recipe=recipe)
-            form.save_m2m()
-            return redirect('main-page')
+    ingredients = get_ingredients(request)
+    form = RecipeForm(
+        request.POST or None,
+        files=request.FILES or None,
+        instance=recipe
+    )
+    if not ingredients:
+        form.add_error(None, 'Добавьте ингредиенты')
+    if form.is_valid():
+        recipe = form.save(commit=False)
+        recipe.author = request.user
+        recipe.save()
+        for item in ingredients:
+            Amount.objects.create(
+                amount=ingredients[item],
+                ingredient=Ingredient.objects.get(title=f'{item}'),
+                recipe=recipe)
+        form.save_m2m()
+        return redirect('main-page')
     else:
         form = RecipeForm(request.POST or None, files=request.FILES or None)
     return render(request, 'formRecipe.html', {'form': form})
@@ -121,21 +124,13 @@ def recipe_delete(request, recipe_id):
     return redirect('main-page')
 
 
-def recipe_view(request, username, resipe_id):
+def recipe_view(request, username, reсipe_id):
     recipe = get_object_or_404(
         Recipe,
         author__username=username,
         id=resipe_id
     )
     return render(request, 'singlePage.html', {'recipe': recipe})
-
-
-class IngredientFilter(rest_filters.FilterSet):
-    query = CharFilter(field_name='title', lookup_expr='icontains')
-
-    class Meta:
-        model = Ingredient
-        fields = ['title', ]
 
 
 class IngredientViewSet(viewsets.ModelViewSet):
@@ -153,17 +148,12 @@ class FavorsViewSet(viewsets.ModelViewSet):
         return get_object_or_404(
             Favors, user=self.request.user, recipe=self.kwargs.get('pk'))
 
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return JsonResponse({'success': True})
-
 
 def favorites(request):
 
     tags = Tag.objects.all()
     recipe_list = tags_values(request.GET.getlist('filters'))
-    paginator = Paginator(recipe_list, 6)
+    paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
 
@@ -193,7 +183,7 @@ class Purchases(View):
 
 
 def shop(request):
-    shop_list = ShopList.objects.filter(user=request.user).all()
+    shop_list = ShopList.objects.filter(user=request.user)
     return render(request, 'shopList.html', {'shop_list': shop_list})
 
 
@@ -240,7 +230,7 @@ def profile(request, username):
     if tags_values:
         recipe_list = recipe_list.filter(tags__value__in=tags_values)
 
-    paginator = Paginator(recipe_list, 6)
+    paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
 
@@ -279,8 +269,8 @@ class Subscription(View):
 @login_required
 def subs_view(request, username):
     user = get_object_or_404(User, username=username)
-    authors_list = Follow.objects.filter(user=user).all()
-    paginator = Paginator(authors_list, 6)
+    authors_list = Follow.objects.filter(user=user)
+    paginator = Paginator(authors_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
 
