@@ -15,9 +15,9 @@ router.register('favorites', views.FavorsViewSet, basename='favorites')
 urlpatterns = [
     path('', views.index, name='main-page'),
     path('', include(router.urls)),
-    path("recipe/<username>/", views.profile, name='profile'),
+    path("recipe/<str:username>/", views.profile, name='profile'),
     path('favorite/', views.favorites, name='favorite'),
-    path('subscription/<username>/', views.subs_view, name='subscription'),
+    path('subscription/<str:username>/', views.subs_view, name='subscription'),
     path('subscriptions/', views.Subscription.as_view(), name='add_subs'),
     path(
         'subscriptions/<int:author_id>/',
@@ -40,7 +40,7 @@ urlpatterns = [
     path('shop/download/', views.download_shop_list, name='download'),
     path('purchases/', views.Purchases.as_view(), name='add_to_shop'),
     path(
-        'purchases/<int:recipe_id>',
+        'purchases/<int:recipe_id>/',
         views.Purchases.as_view(),
         name='remove_from_shop'
         ),
