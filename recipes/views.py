@@ -37,9 +37,10 @@ def tags_values(filter_values):
 
 def index(request):
     title = 'Рецепты'
-    #recipe_list = Recipe.objects.all()
-    recipe_list = tags_values(request.GET.getlist('filters'))
+    recipe_list = Recipe.objects.all()
+    #recipe_list = tags_values(request.GET.getlist('filters'))
     tags_values = request.GET.getlist('filters')
+    print(tags_values)
     tags = Tag.objects.all()
     header = 'Рецепты'
 
