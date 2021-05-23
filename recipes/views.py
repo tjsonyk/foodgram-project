@@ -32,15 +32,13 @@ def tags_values(filter_values):
     if filter_values:
         recipe_list = recipe_list.filter(
             tag__value__in=filter_values).distinct().all()
-        return recipe_list
-    else:
-        return None
+    return recipe_list
 
 
 def index(request):
     title = 'Рецепты'
-    recipe_list = Recipe.objects.all()
-    #recipe_list = tags_values(request.GET.getlist('filters'))
+    #recipe_list = Recipe.objects.all()
+    recipe_list = tags_values(request.GET.getlist('filters'))
     tags_values = request.GET.getlist('filters')
     tags = Tag.objects.all()
     header = 'Рецепты'
