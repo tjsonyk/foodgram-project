@@ -35,7 +35,7 @@ urlpatterns = [
         '<str:username>/<int:recipe_id>/edit/',
         views.recipe_edit,
         name='recipe_edit'
-    ),
+        ),
     path('shop/', views.shop, name='shop'),
     path('shop/download/', views.download_shop_list, name='download'),
     path('purchases/', views.Purchases.as_view(), name='add_to_shop'),
