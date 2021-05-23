@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from django_filters import rest_framework as rest_filters, CharFilter
 from django.core.paginator import Paginator
 from django.views.generic import View
+from django.conf import settings
 
 from .models import (
     Recipe,
@@ -40,7 +41,7 @@ def index(request):
     recipe_list = tags_values(request.GET.getlist('filters'))
     tags = Tag.objects.all()
     header = 'Рецепты'
-    paginator = Paginator(recipe_list, 6)
+    paginator = Paginator(recipe_list, setting.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     return render(
