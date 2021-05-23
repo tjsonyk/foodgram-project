@@ -31,7 +31,6 @@ def tags_values(filter_values):
     if filter_values:
         recipe_list = recipe_list.filter(
             tag__value__in=filter_values).distinct().all()
-        )
 
 
 def index(request):
