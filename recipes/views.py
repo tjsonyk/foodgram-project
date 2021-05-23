@@ -26,7 +26,8 @@ from .serializers import (
 from .helpers import get_ingredients
 
 
-def tags_values(recipe_list=Recipe.objects.all(), filter_values):
+def tags_values(filter_values):
+    recipe_list = Recipe.objects.all()
 
     if filter_values:
         recipe_list = recipe_list.filter(
@@ -36,7 +37,7 @@ def tags_values(recipe_list=Recipe.objects.all(), filter_values):
 
 def index(request):
     title = 'Рецепты'
-    recipe_list = tags_values(filter_values=request.GET.getlist('filters'))
+    recipe_list = tags_values(request.GET.getlist('filters'))
     tags = Tag.objects.all()
     header = 'Рецепты'
     paginator = Paginator(recipe_list, 6)
@@ -160,7 +161,7 @@ class FavorsViewSet(viewsets.ModelViewSet):
 def favorites(request):
 
     tags = Tag.objects.all()
-    recipe_list = tags_values(filter_values=request.GET.getlist('filters'))
+    recipe_list = tags_values(request.GET.getlist('filters'))
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
@@ -230,13 +231,13 @@ def download_shop_list(request):
 def profile(request, username):
     tags = Tag.objects.all()
     profile = get_object_or_404(User, username=username)
+    tags_values = request.GET.getlist('filters')
     recipe_list = Recipe.objects.filter(
         author=profile.pk).all()
     header = get_object_or_404(User, username=username)
-    recipe_list = tags_values(
-        recipe_list=recipe_list,
-        filter_values=request.GET.getlist('filters')
-        )
+
+    if tags_values:
+        recipe_list = recipe_list.filter(tags__value__in=tags_values)
 
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
