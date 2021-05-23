@@ -26,13 +26,13 @@ from .serializers import (
 from .helpers import get_ingredients
 
 
-def tags_values(filter_values):
-    recipe_list = Recipe.objects.all()
-
-    if filter_values:
-        recipe_list = recipe_list.filter(
-            tag__value__in=filter_values).distinct().all()
-    return recipe_list
+#def tags_values(filter_values):
+#    recipe_list = Recipe.objects.all()
+#
+#    if filter_values:
+#        recipe_list = recipe_list.filter(
+#            tag__value__in=filter_values).distinct().all()
+#    return recipe_list
 
 
 def index(request):
@@ -170,15 +170,15 @@ class FavorsViewSet(viewsets.ModelViewSet):
 def favorites(request):
 
     tags = Tag.objects.all()
-    tags_values = tags_values(request.GET.getlist('filters'))
-    #tags_values = request.GET.getlist('filters')
+    #tags_values = tags_values(request.GET.getlist('filters'))
+    tags_values = request.GET.getlist('filters')
 
     recipe_list = Recipe.objects.filter(
         favor__user__id=request.user.id).all()
 
-    #if tags_values:
-    #    recipe_list = recipe_list.filter(
-    #        tag__value__in=tags_values).distinct().all()
+    if tags_values:
+        recipe_list = recipe_list.filter(
+            tag__value__in=tags_values).distinct().all()
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
@@ -248,14 +248,14 @@ def download_shop_list(request):
 def profile(request, username):
     tags = Tag.objects.all()
     profile = get_object_or_404(User, username=username)
-    tags_values = tags_values(request.GET.getlist('filters'))
-    #tags_values = request.GET.getlist('filters')
+    #tags_values = tags_values(request.GET.getlist('filters'))
+    tags_values = request.GET.getlist('filters')
     recipe_list = Recipe.objects.filter(
         author=profile.pk).all()
     header = get_object_or_404(User, username=username)
 
-    #if tags_values:
-    #    recipe_list = recipe_list.filter(tag__value__in=tags_values)
+    if tags_values:
+        recipe_list = recipe_list.filter(tag__value__in=tags_values)
 
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
