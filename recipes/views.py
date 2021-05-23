@@ -37,16 +37,17 @@ def tags_values(filter_values):
 
 def index(request):
     title = 'Рецепты'
-    #recipe_list = Recipe.objects.all()
-    recipe_list = tags_values(request.GET.getlist('filters'))
-    #tags_values = request.GET.getlist('filters')
-    print(recipe_list)
+    recipe_list = Recipe.objects.all()
+    #recipe_list = tags_values(request.GET.getlist('filters'))
+    tags_values = request.GET.getlist('filters')
+    print(tags_values)
     tags = Tag.objects.all()
     header = 'Рецепты'
 
-    #if tags_values:
-    #    recipe_list = recipe_list.filter(
-    #        tag__value__in=tags_values).distinct().all()
+    if tags_values:
+        print(tags_values, "double")
+        recipe_list = recipe_list.filter(
+            tag__value__in=tags_values).distinct().all()
 
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
