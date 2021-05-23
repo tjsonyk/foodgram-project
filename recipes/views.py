@@ -26,25 +26,26 @@ from .serializers import (
 from .helpers import get_ingredients
 
 
-#def tags_values(filter_values):
-#    recipe_list = Recipe.objects.all()
-#
-#    if filter_values:
-#        recipe_list = recipe_list.filter(
-#            tag__value__in=filter_values).distinct().all()
-#    return recipe_list
+def tags_values(filter_values):
+    recipe_list = Recipe.objects.all()
+
+    if filter_values:
+        recipe_list = recipe_list.filter(
+            tags__value__in=filter_values).distinct().all()
+    return recipe_list
 
 
 def index(request):
     title = 'Рецепты'
-    recipe_list = Recipe.objects.all()
-    tags_values = request.GET.getlist('filters')
+    #recipe_list = Recipe.objects.all()
+    #tags_values = request.GET.getlist('filters')
+    recipe_list = tags_values(request.GET.getlist('filters'))
     tags = Tag.objects.all()
     header = 'Рецепты'
 
-    if tags_values:
-        recipe_list = recipe_list.filter(
-            tags__value__in=tags_values).distinct().all()
+    #if tags_values:
+    #    recipe_list = recipe_list.filter(
+    #        tags__value__in=tags_values).distinct().all()
 
     paginator = Paginator(recipe_list, 6)
     page_number = request.GET.get('page')
