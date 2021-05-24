@@ -40,7 +40,7 @@ urlpatterns = [
     path('shop/download/', views.download_shop_list, name='download'),
     path('purchases/', views.Purchases.as_view(), name='add_to_shop'),
     path(
-        'purchases/<int:recipe_id>/',
+        'purchases/<int:recipe_id>',
         views.Purchases.as_view(),
         name='remove_from_shop'
         ),
