@@ -152,7 +152,13 @@ class FavorsViewSet(viewsets.ModelViewSet):
 def favorites(request):
 
     tags = Tag.objects.all()
-    recipe_list = tags_values(request.GET.getlist('filters'))
+    tags_values = request.GET.getlist('filters') 
+    recipe_list = Recipe.objects.filter( 
+        favor__user__id=request.user.id).all()
+    
+    if tags_values: 
+        recipe_list = recipe_list.filter( 
+            tag__value__in=tags_values).distinct().all()
     paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
