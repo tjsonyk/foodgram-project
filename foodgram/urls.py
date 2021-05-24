@@ -12,7 +12,7 @@ handler500 = 'foodgram.views.server_error'
 urlpatterns = [
     #path('auth/', include('users.urls')),
     path('personal/auth/', include('django.contrib.auth.urls')),
-    path('personal/', include('users.urls', namespace='users'))
+    path('personal/', include('users.urls', namespace='users')),
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
     path('project/', views.JustStaticPage.as_view(), name='technologies')
