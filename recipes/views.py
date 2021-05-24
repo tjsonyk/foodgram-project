@@ -128,7 +128,7 @@ def recipe_view(request, username, reсipe_id):
     recipe = get_object_or_404(
         Recipe,
         author__username=username,
-        id=resipe_id
+        id=recipe_id
     )
     return render(request, 'singlePage.html', {'recipe': recipe})
 
