@@ -123,8 +123,8 @@ def recipe_delete(request, recipe_id):
         recipe.delete()
     return redirect('main-page')
 
-#чиню докер
-def recipe_view(request, username, reсipe_id):
+
+def recipe_view(request, username, recipe_id):
     recipe = get_object_or_404(
         Recipe,
         author__username=username,
