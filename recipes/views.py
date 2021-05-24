@@ -123,7 +123,7 @@ def recipe_delete(request, recipe_id):
         recipe.delete()
     return redirect('main-page')
 
-#comment fo rdockerhub
+#чиню докер
 def recipe_view(request, username, reсipe_id):
     recipe = get_object_or_404(
         Recipe,
