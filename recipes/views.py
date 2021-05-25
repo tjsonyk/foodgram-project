@@ -177,7 +177,8 @@ def favorites(request):
 class Purchases(View):
 
     def post(self, request):
-        recipe_id = json.loads(request.body)['id']
+        if json.loads(request.body)['id']:
+            recipe_id = json.loads(request.body)['id']
         recipe = get_object_or_404(Recipe, id=recipe_id)
         
         ShopList.objects.get_or_create(
