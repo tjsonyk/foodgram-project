@@ -102,7 +102,7 @@ class Api {
         })
   }
   removeFavorites (id) {
-    return fetch(`/favorites/${id}`, {
+    return fetch(`/favorites/${id}`/, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

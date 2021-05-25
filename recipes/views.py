@@ -150,7 +150,6 @@ class FavorsViewSet(viewsets.ModelViewSet):
 
 
 def favorites(request):
-
     tags = Tag.objects.all()
     tags_values = request.GET.getlist('filters') 
     recipe_list = Recipe.objects.filter( 
