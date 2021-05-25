@@ -203,7 +203,7 @@ def shop(request):
 def download_shop_list(request):
 
     def generate_shop_list(request):
-        buyer = get_object_or_404(User, username=request.user.username)
+        buyer = self.request.user
         shop_list = buyer.buyer.all()
         ingredients_dict = {}
 
@@ -213,7 +213,7 @@ def download_shop_list(request):
                 name = f'{amount.ingredient.title} ({amount.ingredient.dimension})'
                 units = amount.amount
 
-                if name in ingredients_dict.keys():
+                if ingredients_dict.get(name):
                     ingredients_dict[name] += units
                 else:
                     ingredients_dict[name] = units
@@ -264,7 +264,8 @@ def profile(request, username):
 class Subscription(View):
 
     def post(self, request):
-        author_id = json.loads(request.body)['id']
+        if json.loads(request.body)['id']:
+            author_id = json.loads(request.body)['id']
         author = get_object_or_404(User, id=author_id)
 
         Follow.objects.get_or_create(
@@ -272,9 +273,12 @@ class Subscription(View):
         return JsonResponse({'success': True})
 
     def delete(self, request, author_id):
-        user = get_object_or_404(User, username=request.user.username)
-        author = get_object_or_404(User, id=author_id)
-        obj = get_object_or_404(Follow, user=user, author=author)
+        obj = get_object_or_404(
+            Follow,
+            user=get_object_or_404(User,
+            username=request.user.username),
+            author=get_object_or_404(User, id=author_id)
+            )
         obj.delete()
         return JsonResponse({'success': True})
 
