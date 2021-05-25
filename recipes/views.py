@@ -188,7 +188,7 @@ class Purchases(View):
     def delete(self, request, recipe_id):
         obj = get_object_or_404(
             ShopList,
-            user=get_object_or_404(User, username=),
+            user=get_object_or_404(User, username=request.user.username),
             recipe=get_object_or_404(Recipe, id=recipe_id)
             )
         obj.delete()
