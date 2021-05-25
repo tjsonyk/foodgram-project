@@ -148,6 +148,11 @@ class FavorsViewSet(viewsets.ModelViewSet):
         return get_object_or_404(
             Favors, user=self.request.user, recipe=self.kwargs.get('pk'))
 
+    def destroy(self, request, *args, **kwargs): 
+        instance = self.get_object() 
+        self.perform_destroy(instance) 
+        return JsonResponse({'success': True})
+
 
 def favorites(request):
     tags = Tag.objects.all()
