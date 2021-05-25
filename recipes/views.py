@@ -186,9 +186,11 @@ class Purchases(View):
         return JsonResponse({'success': True})
 
     def delete(self, request, recipe_id):
-        recipe = get_object_or_404(Recipe, id=recipe_id)
-        user = get_object_or_404(User, username=request.user.username)
-        obj = get_object_or_404(ShopList, user=user, recipe=recipe)
+        obj = get_object_or_404(
+            ShopList,
+            user=get_object_or_404(User, username=),
+            recipe=get_object_or_404(Recipe, id=recipe_id)
+            )
         obj.delete()
         return JsonResponse({'success': True})
 
