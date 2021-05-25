@@ -203,7 +203,7 @@ def shop(request):
 def download_shop_list(request):
 
     def generate_shop_list(request):
-        buyer = self.request.user
+        buyer = request.user.username
         shop_list = buyer.buyer.all()
         ingredients_dict = {}
 
