@@ -66,8 +66,8 @@ def new_recipe(request):
         recipe.save()
 
         if not ingredients:
-        form.add_error(None, 'Добавьте ингредиенты')
-        
+            form.add_error(None, 'Добавьте ингредиенты')
+
         for item in ingredients:
             Amount.objects.create(
                 amount=ingredients[item],
