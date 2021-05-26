@@ -59,7 +59,7 @@ def new_recipe(request):
         request.POST or None,
         files=request.FILES or None
     )
-    if not ingredients:
+    if not ingredients and if form.is_valid():
         form.add_error(None, 'Добавьте ингредиенты')
     if form.is_valid():
         recipe = form.save(commit=False)
