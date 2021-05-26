@@ -59,13 +59,15 @@ def new_recipe(request):
         request.POST or None,
         files=request.FILES or None
     )
-    if not ingredients:
-        if form.is_valid:
-            form.add_error(None, 'Добавьте ингредиенты')
+    
     if form.is_valid():
         recipe = form.save(commit=False)
         recipe.author = request.user
         recipe.save()
+
+        if not ingredients:
+        form.add_error(None, 'Добавьте ингредиенты')
+        
         for item in ingredients:
             Amount.objects.create(
                 amount=ingredients[item],
