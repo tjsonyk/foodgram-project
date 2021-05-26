@@ -164,7 +164,7 @@ def favorites(request):
     
     if tags_values: 
         recipe_list = recipe_list.filter( 
-            tag__value__in=tags_values).distinct().all()
+            tags__value__in=tags_values).distinct().all()
     paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
