@@ -57,8 +57,7 @@ def new_recipe(request):
     ingredients = get_ingredients(request)
     form = RecipeForm(
         request.POST or None,
-        files=request.FILES or None,
-        instance=recipe
+        files=request.FILES or None
     )
     if not ingredients:
         form.add_error(None, 'Добавьте ингредиенты')
