@@ -71,7 +71,7 @@ def new_recipe(request):
         for item in ingredients:
             Amount.objects.create(
                 amount=ingredients[item],
-                ingredient=Ingredient.objects.get(title=f'{item}'),
+                ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe)
         form.save_m2m()
         return redirect('main-page')
