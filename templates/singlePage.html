@@ -5,7 +5,7 @@
     <main class="main container">
         {% load thumbnail %}
         {% thumbnail recipe.image "480x480" crop="center" as im %}
-        <div class="single-card" data-id="{{ recipe.id }}" data-author="{{recipe.author.id}}">{% csrf_token %}
+        <div class="single-card" data-id="{{ recipe.id }}" data-author="{{ recipe.author.id }}">{% csrf_token %}
             <img src="{{ im.url }}" alt="{{ recipe.title }}" class="single-card__image">
         {% endthumbnail %} 
             <div class="single-card__info">

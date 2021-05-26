@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<title>{% block title %}{% if recipe %}Редактирование рецепта{% else %}Создание рецепта{% endif %}{% endblock %}</title>
+{% block title %}{% if recipe %}Редактирование рецепта{% else %}Создание рецепта{% endif %}{% endblock %}
     {% load static %}
     {% block css %}<link rel="stylesheet" href="{% static 'pages/form.css' %}">{% endblock %}
 {% block content %}
