@@ -80,16 +80,7 @@ def recipe_edit(request, username, recipe_id):
         Amount.objects.filter(recipe=recipe).delete()
         recipe = form.save(commit=False)
         recipe.save()
-        
-        if not ingredients:
-            form.add_error(None, 'Добавьте ингредиенты')
-
-        for item in ingredients:
-            Amount.objects.create(
-                amount=ingredients[item],
-                ingredient=get_object_or_404(Ingredient, title=f'{item}'),
-                recipe=recipe
-                )
+        form.add_ingredients(ingredients)
         form.save_m2m()
         return redirect('main-page')
 
