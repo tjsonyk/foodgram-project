@@ -10,7 +10,6 @@ handler404 = 'foodgram.views.page_not_found'
 handler500 = 'foodgram.views.server_error'
 
 urlpatterns = [
-    #path('auth/', include('users.urls')),
     path('admin/', admin.site.urls),
     path('personal/auth/', include('django.contrib.auth.urls')),
     path('personal/', include('users.urls', namespace='users')), 

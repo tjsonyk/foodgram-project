@@ -7,7 +7,8 @@
     <div class="custom-center-block">
         <p class="custom-text-block">Технологи на которых собран сайт: Django, JS, NGINX, Gunicorn</p>
     <div class="custom-button-block">
-        <button class="button button_style_blue">Не перейти на главную</button>
+        <button class="button button_style_blue" onclick="document.location='{% url 'main_page' %}'">Не перейти на главную</button>
+        <a class="form__forgot-link" href="{% url 'password_reset' %}">Забыли пароль?</a>
     </div>
     </div>
     </main>

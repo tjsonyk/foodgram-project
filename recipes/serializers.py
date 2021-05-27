@@ -26,7 +26,7 @@ class FavorsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favors
-        fields = ['user', 'recipe']
+        fields = '__all__'
         validators = [
             validators.UniqueTogetherValidator(
                 queryset=Favors.objects.all(),

@@ -28,15 +28,6 @@ from .helpers import get_ingredients
 from .filters import IngredientFilter
 
 
-def tags_values(filter_values):
-    recipe_list = Recipe.objects.all()
-
-    if filter_values:
-        recipe_list = recipe_list.filter(
-            tags__value__in=filter_values).distinct().all()
-    return recipe_list
-
-
 def index(request):
     title = 'Рецепты'
     recipe_list = tags_values(request.GET.getlist('filters'))
@@ -64,15 +55,7 @@ def new_recipe(request):
         recipe = form.save(commit=False)
         recipe.author = request.user
         recipe.save()
-
-        if not ingredients:
-            form.add_error(None, 'Добавьте ингредиенты')
-
-        for item in ingredients:
-            Amount.objects.create(
-                amount=ingredients[item],
-                ingredient=get_object_or_404(Ingredient, title=f'{item}'),
-                recipe=recipe)
+        form.add_ingredients(ingredients)
         form.save_m2m()
         return redirect('main-page')
     else:
@@ -97,19 +80,19 @@ def recipe_edit(request, username, recipe_id):
         Amount.objects.filter(recipe=recipe).delete()
         recipe = form.save(commit=False)
         recipe.save()
+        
+        if not ingredients:
+            form.add_error(None, 'Добавьте ингредиенты')
 
         for item in ingredients:
             Amount.objects.create(
                 amount=ingredients[item],
-                ingredient=Ingredient.objects.get(title=f'{item}'),
+                ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe
                 )
         form.save_m2m()
         return redirect('main-page')
-    form = RecipeForm(
-        request.POST or None,
-        files=request.FILES or None, instance=recipe
-        )
+
     return render(
         request,
         'formRecipe.html',
@@ -179,8 +162,9 @@ def favorites(request):
 class Purchases(View):
 
     def post(self, request):
-        if json.loads(request.body)['id']:
-            recipe_id = json.loads(request.body)['id']
+        purchaise_list = json.loads(request.body)
+        if purchaise_list.get('id'):
+            recipe_id = purchaise_list['id']
         recipe = get_object_or_404(Recipe, id=recipe_id)
         
         ShopList.objects.get_or_create(
@@ -215,7 +199,7 @@ def download_shop_list(request):
                 name = f'{amount.ingredient.title} ({amount.ingredient.dimension})'
                 units = amount.amount
 
-                if ingredients_dict.get(name):
+                if name in ingredients_dict:
                     ingredients_dict[name] += units
                 else:
                     ingredients_dict[name] = units
@@ -266,8 +250,9 @@ def profile(request, username):
 class Subscription(View):
 
     def post(self, request):
-        if json.loads(request.body)['id']:
-            author_id = json.loads(request.body)['id']
+        subscription_list = json.loads(request.body)
+        if subscription_list.get('id'):
+            author_id = subscription_list['id']
         author = get_object_or_404(User, id=author_id)
 
         Follow.objects.get_or_create(
