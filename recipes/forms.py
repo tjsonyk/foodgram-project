@@ -21,8 +21,7 @@ class RecipeForm(forms.ModelForm):
                 amount=ingredients[item],
                 ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe
-                )if not ingredients:
-            form.add_error(None, 'Добавьте ингредиенты')
+                )
 
         for item in ingredients:
             Amount.objects.create(
