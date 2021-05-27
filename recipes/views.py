@@ -24,7 +24,7 @@ from .serializers import (
     IngredientSerializer,
     FavorsSerializer
     )
-from .helpers import get_ingredients
+from .helpers import get_ingredients, tags_values
 from .filters import IngredientFilter
 
 
