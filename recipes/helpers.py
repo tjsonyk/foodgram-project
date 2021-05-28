@@ -17,8 +17,7 @@ def get_ingredients(request):
 
     return ingredients
 
-def tags_values(filter_values):
-    recipe_list = Recipe.objects.all()
+def tags_values(filter_values, recipe_list):
 
     if filter_values:
         recipe_list = recipe_list.filter(
