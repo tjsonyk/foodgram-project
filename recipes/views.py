@@ -209,16 +209,11 @@ def download_shop_list(request):
 def profile(request, username):
     tags = Tag.objects.all()
     profile = get_object_or_404(User, username=username)
-    tags_values = request.GET.getlist('filters')
     recipe_list = tags_values(
         request.GET.getlist('filters'),
         Recipe.objects.filter(author=profile.pk)
         )
     header = get_object_or_404(User, username=username)
-
-    if tags_values:
-        recipe_list = recipe_list.filter(tags__value__in=tags_values)
-
     paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
