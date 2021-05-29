@@ -72,11 +72,7 @@ def recipe_edit(request, username, recipe_id):
         instance=recipe
     )
     if form.is_valid():
-        Amount.objects.filter(recipe=recipe).delete()
-        recipe = form.save(commit=False)
-        recipe.save()
-        form.add_ingredients(ingredients)
-        form.save_m2m()
+        form.save(ingredients=ingredients, request=request)
         return redirect('main-page')
 
     return render(
