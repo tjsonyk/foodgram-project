@@ -52,7 +52,7 @@ def new_recipe(request):
     )
     
     if form.is_valid():
-        form.save(ingredients=ingredients, author = author, request=request)
+        form.save(ingredients=ingredients, request=request)
         return redirect('main-page')
 
     return render(request, 'formRecipe.html', {'form': form})
