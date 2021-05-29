@@ -24,9 +24,9 @@ class RecipeForm(forms.ModelForm):
     #            recipe=recipe
     #            )
     
-    def save(self, commit=True, ingredients=None):
+    def save(self, commit=True, ingredients=None, author=recipe.author):
         recipe = super().save(commit=False)
-        recipe.author = request.user
+        recipe.author = author
         recipe.save()
 
         if ingredients == None:
