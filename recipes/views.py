@@ -46,13 +46,14 @@ def index(request):
 @login_required
 def new_recipe(request):
     ingredients = get_ingredients(request)
+    recipe.author = request.user
     form = RecipeForm(
         request.POST or None,
         files=request.FILES or None
     )
     
     if form.is_valid():
-        form.save(ingredients=ingredients)
+        form.save(ingredients=ingredients, author = author)
         return redirect('main-page')
 
     return render(request, 'formRecipe.html', {'form': form})
