@@ -52,14 +52,9 @@ def new_recipe(request):
     )
     
     if form.is_valid():
-        recipe = form.save(commit=False)
-        recipe.author = request.user
-        recipe.save()
-        form.add_ingredients(ingredients)
-        form.save_m2m()
+        form.save(ingredients=ingredients)
         return redirect('main-page')
-    else:
-        form = RecipeForm(request.POST or None, files=request.FILES or None)
+
     return render(request, 'formRecipe.html', {'form': form})
 
 

@@ -13,7 +13,22 @@ class RecipeForm(forms.ModelForm):
             'tags': forms.CheckboxSelectMultiple(),
         }
     
-    def add_ingredients(self, ingredients=None):
+    #def add_ingredients(self, ingredients=None):
+    #    if ingredients == None:
+    #        self.add_error(None, 'Добавьте ингредиенты')
+    #
+    #    for item in ingredients:
+    #        Amount.objects.create(
+    #            amount=ingredients[item],
+    #            ingredient=get_object_or_404(Ingredient, title=f'{item}'),
+    #            recipe=recipe
+    #            )
+    
+    def save(self, commit=True, ingredients=None):
+        recipe = super().save(commit=False)
+        recipe.author = request.user
+        recipe.save()
+
         if ingredients == None:
             self.add_error(None, 'Добавьте ингредиенты')
 
@@ -23,10 +38,7 @@ class RecipeForm(forms.ModelForm):
                 ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe
                 )
-
-        for item in ingredients:
-            Amount.objects.create(
-                amount=ingredients[item],
-                ingredient=get_object_or_404(Ingredient, title=f'{item}'),
-                recipe=recipe
-                )
+        
+        Amount.objects.filter(recipe=recipe).delete()
+        form.add_ingredients(ingredients)
+        self.save_m2m()
