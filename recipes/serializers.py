@@ -14,7 +14,6 @@ class DimensionSerializer(serializers.ModelSerializer):
 
 class IngredientSerializer(serializers.ModelSerializer):
     dimension = serializers.StringRelatedField(many=False)
-    #dimension = serializers.CharField(source='dimension.title', read_only=True)
 
     class Meta:
         fields = '__all__'
