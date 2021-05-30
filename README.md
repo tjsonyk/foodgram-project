@@ -1,6 +1,6 @@
 # Foodgram
 foodgram
-![foodgram_workflow](https://github.com/tjsonyk/foodgram-project/workflows/main/badge.svg)
+[![foodgram workflow](https://github.com/tjsonyk/foodgram-project/actions/workflows/main.yml/badge.svg)](https://github.com/tjsonyk/foodgram-project/actions/workflows/main.yml)
 Дипломный проект, Яндекс.Практикум. Данный проект, разворачивает сайт рецептов. Обладает следующим функционалом:
 * Возможность создать рецепт
 * Возможность отредкатировать рецпт или удалить его

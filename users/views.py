@@ -6,5 +6,5 @@ from .forms import CreationForm
 
 class SignUp(CreateView):
     form_class = CreationForm
-    success_url = "/auth/login/"
+    success_url = "main_page"
     template_name = 'reg.html'
