@@ -44,7 +44,7 @@ CORS_URLS_REGEX = r'^/ingredients/.*$'
 
 ROOT_URLCONF = 'foodgram.urls'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates', 'users')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates', 'users/templates/users/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
