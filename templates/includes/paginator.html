@@ -3,7 +3,6 @@
     <ul class="pagination__container">
         {% if page.has_previous %}
         {% if GET_params %}
-        <div>текст для проверки что GETparams отрабатывает</div>
         <li class="pagination__item"><a class="pagination__link link" href="?{{ GET_params.urlencode }}&amp;page={{ page.previous_page_number }}"><span class="icon-left"></span></a></li>
         {% else %}
         <li class="pagination__item"><a class="pagination__link link" href="?page={{ page.previous_page_number }}"><span class="icon-left"></span></a></li>
@@ -13,11 +12,16 @@
         {% if page.number == item %}
         <li class="pagination__item pagination__item_active"><a class="pagination__link link" href="#">{{ item }}</a></li>
         {% else %}
-        <li class="pagination__item"><a class="pagination__link link" href="?page={{ item }}">{{ item }}</a></li>
+        <li class="pagination__item"><a class="pagination__link link" href="?{{ GET_params.urlencode }}&amp;page={{ item }}">{{ item }}</a></li>
         {% endif %}
         {% endfor %}
         {% if page.has_next %}
-        <li class="pagination__item"><a class="pagination__link link" href="?page={{ page.next_page_number }}"><span class="icon-right"></span></a></li>{% endif %}
+        {% if GET_params %}
+        <li class="pagination__item"><a class="pagination__link link" href="?{{ GET_params.urlencode }}&amp;page={{ page.next_page_number }}"><span class="icon-right"></span></a></li>
+        {% else %}
+        <li class="pagination__item"><a class="pagination__link link" href="?page={{ page.next_page_number }}"><span class="icon-right"></span></a></li>
+        {% endif %}
+        {% endif %}
     </ul>
 </nav>
 {% endif %} 

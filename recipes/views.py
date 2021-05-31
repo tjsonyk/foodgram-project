@@ -27,7 +27,7 @@ from .serializers import (
 from .helpers import get_ingredients, tags_values
 from .filters import IngredientFilter
 
-#не релизится без комментария
+
 def index(request):
     title = 'Рецепты'
     recipe_list = tags_values(request.GET.getlist('filters'), Recipe.objects.all())
