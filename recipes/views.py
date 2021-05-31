@@ -27,13 +27,13 @@ from .serializers import (
 from .helpers import get_ingredients, tags_values
 from .filters import IngredientFilter
 
-
+#не релизится без комментария
 def index(request):
     title = 'Рецепты'
     recipe_list = tags_values(request.GET.getlist('filters'), Recipe.objects.all())
     tags = Tag.objects.all()
     header = 'Рецепты'
-    get_params = request.GET.get('filters').copy()
+    get_params = request.GET.copy()
     paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
