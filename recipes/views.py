@@ -33,14 +33,14 @@ def index(request):
     recipe_list = tags_values(request.GET.getlist('filters'), Recipe.objects.all())
     tags = Tag.objects.all()
     header = 'Рецепты'
-    get_params = request.GET.copy()
+    get_params = request.GET.get('filters').copy()
     paginator = Paginator(recipe_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     return render(
         request,
         'indexNotAuth.html',
-        {'title': title, 'page': page, 'tags': tags, 'header': header, 'GET_params':get_params}
+        {'title': title, 'page': page, 'tags': tags, 'header': header, 'GET_params': get_params}
         )
 
 
