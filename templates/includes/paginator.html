@@ -2,7 +2,11 @@
 <nav class="pagination" aria-label="Search results pages">
     <ul class="pagination__container">
         {% if page.has_previous %}
+        {% if GET_params %}
+        <li class="pagination__item"><a class="pagination__link link" href="?{{GET_params.urlencode}}&amp;page={{ page.previous_page_number }}"><span class="icon-left"></span></a></li>
+        {% else %}
         <li class="pagination__item"><a class="pagination__link link" href="?page={{ page.previous_page_number }}"><span class="icon-left"></span></a></li>
+        {% endif %}
         {% endif %}
         {% for item in page.paginator.page_range %}
         {% if page.number == item %}
