@@ -22,11 +22,12 @@ class RecipeForm(forms.ModelForm):
             self.add_error(None, 'Добавьте ингредиенты')
 
         for item in ingredients:
+            if ingredients[item] < 0:
+                self.add_error(None, 'Значение не может быть отрицательным')
             Amount.objects.create(
                 amount=ingredients[item],
                 ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe
                 )
         
-        #Amount.objects.filter(recipe=recipe).delete()
         self.save_m2m()
