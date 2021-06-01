@@ -28,5 +28,5 @@ class RecipeForm(forms.ModelForm):
                 recipe=recipe
                 )
         
-        Amount.objects.filter(recipe=recipe).delete()
+        #Amount.objects.filter(recipe=recipe).delete()
         self.save_m2m()
