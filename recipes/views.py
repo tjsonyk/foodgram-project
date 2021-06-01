@@ -122,6 +122,7 @@ class FavorsViewSet(viewsets.ModelViewSet):
         return JsonResponse({'success': True})
 
 
+@login_required
 def favorites(request):
     tags = Tag.objects.all()
     recipe_list = tags_values(
@@ -161,6 +162,7 @@ class Purchases(View):
         return JsonResponse({'success': True})
 
 
+@login_required
 def shop(request):
     shop_list = ShopList.objects.filter(user=request.user)
     return render(request, 'shopList.html', {'shop_list': shop_list})
