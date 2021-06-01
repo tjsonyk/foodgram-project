@@ -23,9 +23,8 @@
     </div>
     <div class="card-user__footer">
         {% csrf_token %}
-        {% load recipe_form_filters %}
         {% if user|is_follow:item.author %}
-        <button class="button button_style_light-blue button_size_auto" name="subscribe">Отписаться</button>
+        <button class="button button_style_light-blue button_size_auto" name="subscribe"><span class="icon-check button__icon"></span>Отписаться</button>
         {% else %}
         <button class="button button_style_light-blue button_size_auto button_style_blue" name="subscribe" data-out>Подписаться на автора</button>
         {% endif %}
