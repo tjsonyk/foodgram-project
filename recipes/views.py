@@ -98,7 +98,7 @@ def recipe_view(request, username, recipe_id):
         author__username=username,
         id=recipe_id
     )
-    user = get_object_or_404(User, user=username)
+    user = get_object_or_404(User, username=username)
     return render(request, 'singlePage.html', {'recipe': recipe})
 
 
