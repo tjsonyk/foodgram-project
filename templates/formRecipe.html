@@ -63,7 +63,7 @@
                             <span class="form__field-item-delete"></span>
                             <input
                                 id="nameIngredient_{{ forloop.counter }}" name="nameIngredient" type="hidden"
-                                value="{{ item.ingredient.title }}"
+                                value="{{ item.title }}"
                             >
                             <input
                                 id="valueIngredient_{{ forloop.counter }}" name="valueIngredient" type="hidden"
@@ -71,7 +71,7 @@
                             >
                             <input
                                 id="unitIngredient_{{ forloop.counter }}" name="unitIngredient" type="hidden"
-                                value="{{ item.ingredient.dimension }}"
+                                value="{{ item.dimension }}"
                             >
                         </div>
                         {% endfor %}
