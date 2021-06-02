@@ -38,7 +38,7 @@
                     {% load recipe_form_filters %}
                     <li class="single-card__item"><button class="button {% if user|purchases:recipe %}button_style_light-blue-outline{% else %}button_style_blue{% endif %}" name="purchases" {% if not user|purchases:recipe %}data-out{% endif %}>{% if user|purchases:recipe %}<span class="icon-check button__icon"></span> Рецепт добавлен{% else %}<span class="icon-plus"></span> Добавить в покупки{% endif %}</button></li>
                     <li class="single-card__item">
-                        {% if user|is_follow:recipe.author %}
+                        {% if recipe.author|is_follow:user %}
                         <button class="button button_style_light-blue button_size_subscribe button_style_blue" name="subscribe">Отписаться от автора</button>
                         {% else %}
                         <button class="button button_style_light-blue button_size_auto button_style_blue" name="subscribe" data-out>Подписаться на автора</button>
