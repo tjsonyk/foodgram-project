@@ -77,7 +77,6 @@ class Recipe(models.Model):
         ordering = ('-pub_date',)
 
     def get_ingredients(self):
-        #return ",".join([str(ingredient) for ingredient in self.ingredient.all()])
         return Recipe.objects.value_list('ingredients')
 
     def __str__(self):
