@@ -3,10 +3,8 @@
 {% block content %}
 {% load static %}
 {% block css %}<link rel="stylesheet" href="{% static 'pages/index.css' %}">{% endblock %}
-<body class="body">
 <main role="main" class="container">
-    <div class="custom-center-block"></div>
-        <div class="main__header">
+    <div class="custom-center-block">
             <div class="row">
                     <div class="col-md-12">
                     <h1>Ошибка 500</h1>
@@ -14,10 +12,9 @@
                     <p class="lead"><a href="{% url 'main-page' %}">Вернуться на главную</a></p>
                     </div>
             </div>
-        </div>
     </div>
 </main>
-</body>
+
 {% endblock %}
 {% block JS %}
 {% endblock %}
