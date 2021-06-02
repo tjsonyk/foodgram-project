@@ -57,7 +57,7 @@
                         <label for="cantidad" class="form__label" id="cantidadVal">шт.</label>
                     </div>
                     <div class="form__field-group-ingredientes-container">
-                        {% if recipe %} {% for item in recipe.ingredients.all %}{% endfor %} {% endif %}
+                        {% for ingredient in form.instance.ingredients.all %}{% endfor %}
                     </div>
                     <span class="form__ingredient-link" id="addIng">Добавить ингредиент</span>
                     {% if form.errors %}
