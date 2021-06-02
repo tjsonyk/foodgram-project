@@ -51,13 +51,13 @@
                     <div class="form__field-group-ingredientes">
                         <div class="form__dropdown">
                             <input type="text" id="nameIngredient" class="form__input">
-                            <div class="form__dropdown-items">{% if recipe %} {% for ingredient in form.instance.ingredients.all %}{% endfor %} {% endif %}</div>
+                            <div class="form__dropdown-items"></div>
                         </div>
                         <input type="number" id="cantidad" class="form__input" min="0">
                         <label for="cantidad" class="form__label" id="cantidadVal">шт.</label>
                     </div>
                     <div class="form__field-group-ingredientes-container">
-
+                        {% if recipe %} {% for item in recipe.ingredients.all %}{% endfor %} {% endif %}
                     </div>
                     <span class="form__ingredient-link" id="addIng">Добавить ингредиент</span>
                     {% if form.errors %}
