@@ -260,5 +260,5 @@ def subs_view(request, username):
     return render(
         request,
         'myFollow.html',
-        {'page': page, 'paginator': paginator, 'authors': authors_list, }
+        {'page': page, 'paginator': paginator, 'authors': authors_list, 'user': user}
         )
