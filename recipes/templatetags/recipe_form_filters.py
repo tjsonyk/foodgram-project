@@ -40,4 +40,5 @@ def purchases(user, recipe):
 
 @register.filter(name='is_follow')
 def is_follow(author, user):
+    print(author, user)
     return Follow.objects.filter(user=user, author=author).exists()
