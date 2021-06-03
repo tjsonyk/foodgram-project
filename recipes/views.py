@@ -254,6 +254,7 @@ class Subscription(View):
 
 @login_required
 def subs_view(request, username):
+    user = get_object_or_404(User, username=username)
     authors_list = Follow.objects.filter(user=user)
     paginator = Paginator(authors_list, settings.MAX_PAGE)
     page_number = request.GET.get('page')
