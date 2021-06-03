@@ -52,7 +52,8 @@ def new_recipe(request):
         files=request.FILES or None
     )
     if not ingredients:
-            self.add_error(None, 'Добавьте ингредиенты')
+            form.add_error(None, 'Добавьте ингредиенты')
+
     elif form.is_valid():
         form.save(ingredients=ingredients, request=request)
         return redirect('main-page')
