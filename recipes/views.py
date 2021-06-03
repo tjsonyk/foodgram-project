@@ -51,10 +51,10 @@ def new_recipe(request):
         request.POST or None,
         files=request.FILES or None
     )
-    if not ingredients:
-        form.add_error(None, 'Добавьте ингредиенты')
 
     elif form.is_valid():
+        if not ingredients:
+            form.add_error(None, 'Добавьте ингредиенты')
         form.save(ingredients=ingredients, request=request)
         return redirect('main-page')
 
