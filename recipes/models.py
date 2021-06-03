@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from .validators import validate_not_negative
+
 User = get_user_model()
 
 
@@ -67,6 +69,7 @@ class Recipe(models.Model):
         Ingredient,
         through='Amount',
         through_fields=('recipe', 'ingredient'),
+        validators=[validate_not_negative],
         )
     tags = models.ManyToManyField(Tag)
     cooking_time = models.PositiveSmallIntegerField(default=1)

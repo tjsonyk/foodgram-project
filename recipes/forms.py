@@ -23,7 +23,7 @@ class RecipeForm(forms.ModelForm):
 
         for item in ingredients:
             Amount.objects.create(
-                amount=abs(int(ingredients[item])),
+                amount=ingredients[item],
                 ingredient=get_object_or_404(Ingredient, title=f'{item}'),
                 recipe=recipe
                 )
