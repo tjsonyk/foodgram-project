@@ -69,7 +69,6 @@ class Recipe(models.Model):
         Ingredient,
         through='Amount',
         through_fields=('recipe', 'ingredient'),
-        validators=[validate_not_negative],
         )
     tags = models.ManyToManyField(Tag)
     cooking_time = models.PositiveSmallIntegerField(default=1)
@@ -90,7 +89,7 @@ class Recipe(models.Model):
 
 
 class Amount(models.Model):
-    amount = models.PositiveSmallIntegerField(default=1)
+    amount = models.PositiveSmallIntegerField(default=1, validators=[validate_not_negative])
     ingredient = models.ForeignKey(
         Ingredient,
         on_delete=models.CASCADE,
