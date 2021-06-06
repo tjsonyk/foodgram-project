@@ -33,7 +33,7 @@
                                 name="tags"
                                 id="id_{{ tag.instance.value }}"
                                 class="tags__checkbox tags__checkbox_style_{{ tag.instance.style }}"
-                                value="{{ tag.instance.pk }}">
+                                value="{{ tag.instance.pk }}"{% if tag in form.tags.value %}checked="checked"{% endif %}>
                             <label for="id_{{ tag.instance.value }}" class="tags__label">{{ tag.instance.name }}</label>
                         </div>
                         {% endfor %}
