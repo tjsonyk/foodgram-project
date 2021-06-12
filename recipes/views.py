@@ -76,8 +76,11 @@ def recipe_edit(request, username, recipe_id):
         instance=recipe
     )
     if form.is_valid():
-        form.save(ingredients=ingredients, request=request)
-        return redirect('main-page')
+        if not ingredients:
+            form.add_error(None, 'Добавьте ингредиенты')
+        else:
+            form.save(ingredients=ingredients, request=request)
+            return redirect('main-page')
 
     return render(
         request,
