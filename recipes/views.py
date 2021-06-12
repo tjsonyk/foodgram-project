@@ -53,8 +53,6 @@ def new_recipe(request):
     )
 
     if form.is_valid():
-        if not ingredients:
-            form.add_error(None, 'Добавьте ингредиенты')
         form.save(ingredients=ingredients, request=request)
         return redirect('main-page')
 
