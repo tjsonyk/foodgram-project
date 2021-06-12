@@ -126,9 +126,9 @@
                 {% else %}
                 <button class="button button_style_blue">Создать рецепт</button>
                 {% endif %}
-                <span class="form__error">
-                    {{ form.erros }}
-                </span>
+                {% for error in form.non_field_errors %}
+                <span class="form__error">{{ error|escape }}</span>
+                {% endfor %}
                 
             </div>
         </form>
