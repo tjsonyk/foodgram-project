@@ -56,6 +56,9 @@ def new_recipe(request):
         if not ingredients:
             form.add_error(None, 'Добавьте ингредиенты')
         else:
+            for item in ingredients.values():
+                if int(item) < 0:
+                    form.add_error(None, 'Введено отрицательное знакчение для количества ингрединтов')
             form.save(ingredients=ingredients, request=request)
             return redirect('main-page')
 
