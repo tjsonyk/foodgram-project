@@ -15,6 +15,11 @@ class RecipeForm(forms.ModelForm):
         }
     
     def save(self, request, commit=True, ingredients=None):
+        if ingredients == None:
+            raise ValidationError('Добавьте ингредиенты')
+        #data = self.cleaned_data['ingredients']
+        #if data == None:
+        #    raise ValidationError('Добавьте ингредиенты')
         recipe = super().save(commit=False)
         recipe.author = request.user
         recipe.save()
@@ -22,8 +27,7 @@ class RecipeForm(forms.ModelForm):
         #if ingredients == None:
         #    self.add_error(None, 'Добавьте ингредиенты')
 
-        if ingredients == None:
-            raise ValidationError('Добавьте ингредиенты')
+        
 
         for item in ingredients:
             Amount.objects.create(
