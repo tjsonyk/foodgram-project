@@ -128,7 +128,7 @@
                 {% endif %}
                 <span class="form__error">
                     {% if form.errors %}
-                        {% for error in form.errors %}
+                        {% for error in field.errors %}
                             {{ error|escape }}
                         {% endfor %}
                     {% endif %}
