@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 
 from .models import Recipe, Amount, Ingredient
@@ -18,8 +19,11 @@ class RecipeForm(forms.ModelForm):
         recipe.author = request.user
         recipe.save()
 
+        #if ingredients == None:
+        #    self.add_error(None, 'Добавьте ингредиенты')
+
         if ingredients == None:
-            self.add_error(None, 'Добавьте ингредиенты')
+            raise ValidationError('Добавьте ингредиенты')
 
         for item in ingredients:
             Amount.objects.create(
