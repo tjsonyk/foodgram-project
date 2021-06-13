@@ -16,19 +16,6 @@ def get_ingredients(request):
             ]
     return ingredients
 
-for key, name in a.items():
-    if key.startswith('nameIngredient'):
-        n = key.split('_')
-        if len(n) > 1:
-            num = n[1]
-            ingredients[name] = a[
-                f'valueIngredient_{num}'
-            ]
-        else:
-            ingredients[name] = a[
-                f'valueIngredient'
-            ]
-
 def tags_values(filter_values, recipe_list):
 
     if filter_values:
