@@ -63,15 +63,15 @@
                             <span> {{ item.ingredient.title }} - {{ item.amount }} {{ item.ingredient.dimension }}</span>
                             <span class="form__field-item-delete"></span>
                             <input
-                                id="nameIngredient_{{ forloop.counter }}" name="nameIngredient" type="hidden"
+                                id="nameIngredient_{{ forloop.counter }}" name="nameIngredient_{{ forloop.counter }}" type="hidden"
                                 value="{{ item.ingredient.title }}"
                             >
                             <input
-                                id="valueIngredient_{{ forloop.counter }}" name="valueIngredient" type="hidden"
+                                id="valueIngredient_{{ forloop.counter }}" name="valueIngredient_{{ forloop.counter }}" type="hidden"
                                 value="{{ item.amount }}"
                             >
                             <input
-                                id="unitIngredient_{{ forloop.counter }}" name="unitIngredient" type="hidden"
+                                id="unitIngredient_{{ forloop.counter }}" name="unitIngredient_{{ forloop.counter }}" type="hidden"
                                 value="{{ item.ingredient.dimension }}"
                             >
                         </div>
