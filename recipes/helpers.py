@@ -6,15 +6,14 @@ User = get_user_model()
 
 
 def get_ingredients(request):
-
     ingredients = {}
-    for key in request.POST:
+    print(request.POST)
+    for key, name in request.POST.items():
         if key.startswith('nameIngredient'):
-            value_ingredient = key[15:]
-            ingredients[request.POST[key]] = request.POST[
-                'valueIngredient_' + value_ingredient
+            num = key.split('_')[1]
+            ingredients[name] = request.POST[
+                f'valueIngredient_{num}'
             ]
-
     return ingredients
 
 def tags_values(filter_values, recipe_list):
