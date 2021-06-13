@@ -58,7 +58,7 @@ def new_recipe(request):
         else:
             for item in ingredients.values():
                 if int(item) < 0:
-                    form.add_error(None, 'Введено отрицательное знакчение для количества ингрединтов')
+                    form.add_error(None, 'Введено отрицательное значение для количества ингрединтов')
             form.save(ingredients=ingredients, request=request)
             return redirect('main-page')
 
@@ -78,7 +78,9 @@ def recipe_edit(request, username, recipe_id):
         files=request.FILES or None,
         instance=recipe
     )
+
     if form.is_valid():
+        Amount.objects.filter(recipe=recipe).delete()
         if not ingredients:
             form.add_error(None, 'Добавьте ингредиенты')
         else:
