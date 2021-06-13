@@ -7,19 +7,27 @@ User = get_user_model()
 
 def get_ingredients(request):
     ingredients = {}
+
     for key, name in request.POST.items():
         if key.startswith('nameIngredient'):
-            n = key.split('_')
-            if len(n) > 1:
-                num = n[1]
-                ingredients[name] = request.POST[
+            num = key.split('_')[1]
+            ingredients[name] = request.POST[
                 f'valueIngredient_{num}'
             ]
-            else:
-                ingredients[name] = request.POST[
-                    f'valueIngredient'
-                ]
     return ingredients
+
+for key, name in a.items():
+    if key.startswith('nameIngredient'):
+        n = key.split('_')
+        if len(n) > 1:
+            num = n[1]
+            ingredients[name] = a[
+                f'valueIngredient_{num}'
+            ]
+        else:
+            ingredients[name] = a[
+                f'valueIngredient'
+            ]
 
 def tags_values(filter_values, recipe_list):
 
